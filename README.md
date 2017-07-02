@@ -5,7 +5,7 @@ The loader loads a function that receives a properties object.
 
 ### Configuration
 In webpack.config:
-``` json
+```
 module:{
     rules:{
         {
