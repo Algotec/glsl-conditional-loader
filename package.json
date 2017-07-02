@@ -16,11 +16,13 @@
   "author": "Uri Mor <urim@algotec.co.il>",
   "license": "MIT",
   "devDependencies": {
-    "webpack": "^3.0.0"
+    "webpack": "^2.0.0"
   },
   "dependencies": {
     "acorn": "^5.0.3",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.0",
     "loader-utils": "^1.1.0"
   }
 }
