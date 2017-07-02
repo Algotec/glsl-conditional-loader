@@ -1,0 +1,26 @@
+{
+  "name": "glsl-conditional-loader",
+  "version": "1.0.0",
+  "description": "Webpack loader for conditional includes in glsl files",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Algotec/glsl-conditional-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "glsl",
+    "conditional"
+  ],
+  "author": "Uri Mor <urim@algotec.co.il>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "acorn": "^5.0.3",
+    "babel-core": "^6.25.0",
+    "loader-utils": "^1.1.0"
+  }
+}
