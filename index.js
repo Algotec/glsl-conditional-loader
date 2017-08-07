@@ -124,6 +124,7 @@ module.exports = function (content) {
                         });
                     }
                 })
+                .catch((e)=>reject(e));
         })
     }
 
