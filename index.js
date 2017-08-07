@@ -64,7 +64,7 @@ module.exports = function (content) {
                         .then((fileData) => {
                             if (higherLevelFilePaths.has(fileData.path)) {
                                 // Circular dependency
-                                throw new Error("Reached a circular dependancy when loading " + include.fileName + " from " + parentfileName);
+                                throw new Error("Reached a circular dependency when loading " + include.fileName + " from " + parentfileName);
                             }
                             fixedIncludesList[index].filePath = fileData.path;
                             fixedIncludesList[index].content = fileData.content;
@@ -109,7 +109,7 @@ module.exports = function (content) {
         return new Promise((resolve, reject) => {
             loader.resolve(context, fileName, (err, filePath) => {
                 if (err || filePath === undefined) {
-                    reject(new Error("Could not resolve " + fileName + ". err =" + err));
+                    reject(new Error("Could not resolve " + fileName + ". " + err));
                 }
                 resolve(filePath);
             })
@@ -128,7 +128,7 @@ module.exports = function (content) {
                         loader.addDependency(filePath);
                         fs.readFile(filePath, 'utf-8', (err, result) => {
                             if (err) {
-                                reject(new Error("Could not read file " + filePath + ". err =" + err));
+                                reject(new Error("Could not read file " + filePath + ". " + err));
                             }
                             const fileData = {
                                 content: result,
