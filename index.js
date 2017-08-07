@@ -8,6 +8,7 @@ module.exports = function (content) {
     const loader = this;
     this.cacheable();
     const callback = this.async();
+    let callbackCalled = false;
 
     const filesCache = new Map();
 
@@ -25,13 +26,28 @@ module.exports = function (content) {
     const loaderOptions = loaderUtils.getOptions(loader);
     const options = Object.assign({}, defaultOptions, loaderOptions);
 
+    process.on('unhandledRejection', failure);
 
     createDependancyTree(content, this.context, this.resourcePath)
         .then((dependencyTree) => replaceContent(content, dependencyTree))
         .then(createMethod)
-        .then((result) => callback(null, result))
-        .catch((error) => callback(error));
+        .then(success)
+        .catch(failure);
 
+
+    function success(result){
+        if(!callbackCalled) {
+            callback(null, result);
+            callbackCalled = true;
+        }
+    }
+
+    function failure(error){
+        if(!callbackCalled) {
+            callback(error);
+            callbackCalled = true;
+        }
+    }
 
     function createDependancyTree(content, context, parentfileName, higherLevelFilePaths) {
         if (typeof higherLevelFilePaths == 'undefined') {
