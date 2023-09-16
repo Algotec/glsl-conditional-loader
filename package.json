@@ -1,6 +1,6 @@
 {
   "name": "glsl-conditional-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webpack loader for conditional includes in glsl files",
   "main": "index.js",
   "repository": {
